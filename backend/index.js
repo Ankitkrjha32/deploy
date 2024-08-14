@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: 'https://deploy-dun-nine.vercel.app',
+  origin: 'https://frontend-eight-roan-64.vercel.app',
   credentials: true
 };
 
