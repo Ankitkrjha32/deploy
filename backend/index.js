@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: 'https://frontend-eight-roan-64.vercel.app',
+  origin: 'https://frontendnew-tuha.onrender.com',
   methods:["GET" , "POST", "PUT" , "DELETE"],
   credentials: true
 };
