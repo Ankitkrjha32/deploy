@@ -24,6 +24,8 @@ const corsOptions = {
   credentials: true
 };
 
+app.get('/', (req, res) => res.send('API Running'));
+
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
