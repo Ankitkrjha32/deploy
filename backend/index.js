@@ -18,13 +18,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const corsOptions = {
-  origin: 'https://frontend-eight-roan-64.vercel.app',
-  methods:["GET" , "POST", "PUT" , "DELETE"],
-  credentials: true
-};
+// const corsOptions = {
+//   origin: 'https://frontend-eight-roan-64.vercel.app',
+//   methods:["GET" , "POST", "PUT" , "DELETE"],
+//   credentials: true
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
