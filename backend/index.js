@@ -24,7 +24,7 @@ const corsOptions = {
   credentials: true
 };
 
-app.get('/', (req, res) => res.send('API Running'));
+
 
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -34,6 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 3000;
 
 // APIs
+app.get('/', (req, res) => res.send('API Running'));
 app.use('/api/v1/user', userRoute);
 app.use('/api/v1/notes', noteRoutes);
 
