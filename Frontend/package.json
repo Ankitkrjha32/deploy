@@ -2,7 +2,8 @@
   "name": "my-project",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://deploy-dun-nine.vercel.app",
+ "proxy": "http://localhost:8000 " ,
+
   "dependencies": {
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
