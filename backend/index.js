@@ -20,7 +20,7 @@ app.use(cookieParser());
 
 const corsOptions = {
   origin: 'https://frontend-eight-roan-64.vercel.app',
-  // methods:["GET" , "POST", "PUT" , "DELETE"],
+  methods:["GET" , "POST", "PUT" , "DELETE"],
   credentials: true
 };
 
