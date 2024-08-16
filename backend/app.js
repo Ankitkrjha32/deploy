@@ -24,7 +24,7 @@ app.use(cookieParser());
 
 app.use(cors());
 
-const PORT =3000;
+const PORT =process.env.PORT||4000;
 
 // APIs
 app.get('/', (req, res) => res.send('API Running'));
