@@ -15,16 +15,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const corsOptions = {
-  origin: 'https://frontend-eight-roan-64.vercel.app',
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
-};
+// const corsOptions = {
+//   origin: 'https://frontend-eight-roan-64.vercel.app',
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true,
+//   allowedHeaders: ['Content-Type', 'Authorization']
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
-const PORT =4000;
+const PORT =3000;
 
 // APIs
 app.get('/', (req, res) => res.send('API Running'));
