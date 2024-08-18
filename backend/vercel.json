@@ -2,34 +2,34 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.js",
+      "src": "backend/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/v1/user/(.*)",
-      "dest": "/index.js"
+      "dest": "backend/index.js"
     },
     {
       "src": "/api/v1/notes/(.*)",
-      "dest": "/index.js"
+      "dest": "backend/index.js"
     },
     {
       "src": "/api/v1/user/register",
-      "dest": "/index.js"
+      "dest": "backend/index.js"
     },
     {
       "src": "/api/v1/user/login",
-      "dest": "/index.js"
+      "dest": "backend/index.js"
     },
     {
       "src": "/api/v1/user/logout",
-      "dest": "/index.js"
+      "dest": "backend/index.js"
     },
     {
       "src": "/api/v1/user/profile/update",
-      "dest": "/index.js"
+      "dest": "backend/index.js"
     }
   ]
 }
