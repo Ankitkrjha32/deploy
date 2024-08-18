@@ -1,1 +1,1 @@
-export const USER_API_END_POINT="http://localhost:7000/api/v1/user";
+export const USER_API_END_POINT="https://deploy-s5i8.onrender.com/api/v1/user";
