@@ -64,7 +64,7 @@ export const login = async (req, res) => {
                 success: false
             });
         }
-
+        console.log("email find krna hai ab mujjhe bss yaaha tk tho pahuch gya");
         // Find user by email
         let user = await User.findOne({ email });
         if (!user) {
@@ -73,7 +73,7 @@ export const login = async (req, res) => {
                 success: false,
             });
         }
-
+         console.log("user find nhi kr paya mai ");
         // Compare the provided password with the hashed password in the database
         const isPasswordMatch = await bcrypt.compare(password, user.password);
         if (!isPasswordMatch) {
