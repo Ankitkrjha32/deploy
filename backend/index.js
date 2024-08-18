@@ -52,7 +52,7 @@ app.use((req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
-app.listen(PORT, () => {
+app.listen(port, '0.0.0.0', () => {
   connectDB();
   console.log(`Server running at port ${PORT}`);
 });
