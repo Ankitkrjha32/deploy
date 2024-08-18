@@ -11,48 +11,66 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLoading, setUser } from '../../redux/authSlice';
 import { Loader2 } from 'lucide-react';
 import { USER_API_END_POINT } from '../../utils/constant';
-import { User } from '../Context/UserContext';
-
 
 const Login = () => {
   const [input, setInput] = useState({
     email: '',
     password: '',
-  
   });
-  const { loading, user } = useSelector((store) => store.auth);
+
+  const { loading } = useSelector((store) => store.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // Handle input changes
   const changeEventHandler = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
+  // Handle form submission
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
+      // Start loading
       dispatch(setLoading(true));
+
+      // Send login request to the backend
       const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
         headers: {
           'Content-Type': 'application/json',
         },
-        withCredentials: true,
+        withCredentials: true,  // Ensures cookies are sent with the request
       });
-      
-      console.log('Response:', res); // Log the response
-      console.log('Response Data:', res.data); // Log the response data
-      if (res.data.success) {
+
+      console.log('Response:', res);
+
+      // Safeguard against missing data in response
+      if (res && res.data && res.data.success) {
+        // Update Redux store with the user data
         dispatch(setUser(res.data.user));
+
+        // Navigate to notes page after successful login
         navigate('/notes');
+
+        // Show success message
         toast.success(res.data.message);
+      } else {
+        // Handle case where the backend response is unexpected
+        toast.error('Unexpected response from the server.');
       }
-    const user = { name: 'John Doe', profilePicture: 'path/to/profile-picture.jpg' }; 
-    setUser(user);
-    }
-     catch (error) {
-      console.log(error);
-      toast.error(error.response.data.message);
+
+    } catch (error) {
+      console.error(error);
+      
+      // Handle error from server or network
+      if (error.response && error.response.data) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error('An error occurred during login.');
+      }
+      
     } finally {
+      // Stop loading
       dispatch(setLoading(false));
     }
   };
@@ -68,6 +86,8 @@ const Login = () => {
           <h1 className="font-bold text-3xl mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-300">
             Login
           </h1>
+
+          {/* Email Input */}
           <div className="my-4">
             <Label className="text-sm text-gray-300">Email</Label>
             <Input
@@ -80,6 +100,7 @@ const Login = () => {
             />
           </div>
 
+          {/* Password Input */}
           <div className="my-4">
             <Label className="text-sm text-gray-300">Password</Label>
             <Input
@@ -91,6 +112,8 @@ const Login = () => {
               className="w-full mt-1 p-2 bg-gray-700 text-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
+
+          {/* Role Radio Group */}
           <div className="my-6">
             <RadioGroup className="flex items-center gap-4">
               <div className="flex items-center space-x-2">
@@ -104,19 +127,11 @@ const Login = () => {
                 />
                 <Label htmlFor="r1" className="text-gray-300">Student</Label>
               </div>
-              {/* <div className="flex items-center space-x-2">
-                <Input
-                  type="radio"
-                  name="role"
-                  value="recruiter"
-                  checked={input.role === 'recruiter'}
-                  onChange={changeEventHandler}
-                  className="cursor-pointer"
-                />
-                <Label htmlFor="r2">Recruiter</Label>
-              </div> */}
+              {/* Additional role options can be added here */}
             </RadioGroup>
           </div>
+
+          {/* Submit Button with Loading Indicator */}
           {loading ? (
             <Button className="w-full py-3 text-lg bg-blue-600 rounded-lg flex justify-center items-center">
               <Loader2 className="mr-2 h-5 w-5 animate-spin" />
@@ -127,6 +142,8 @@ const Login = () => {
               Login
             </Button>
           )}
+
+          {/* Redirect to Signup */}
           <div className="text-center mt-4">
             <span className="text-sm text-gray-400">
               Don't have an account?{' '}
