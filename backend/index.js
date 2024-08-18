@@ -32,7 +32,12 @@ app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 4000;
 
 // APIs
-app.use('/api/v1/user', userRoute);
+// app.use('/api/v1/user', userRoute);
+app.use('/api/v1/user', (req, res, next) => {
+  console.log('Request reached /api/v1/user route');
+  next();
+}, userRoute);
+
 app.use('/api/v1/notes', noteRoutes);
 
 // Root Route to Test the Server (Optional)
