@@ -9,27 +9,15 @@
   "routes": [
     {
       "src": "/api/v1/user/(.*)", 
-      "dest": "/index.js" 
+      "dest": "/index.js"
     },
     {
       "src": "/api/v1/notes/(.*)", 
       "dest": "/index.js"
     },
     {
-      "src": "/api/v1/user/login", 
-      "dest": "/index.js"
-    },
-    {
-      "src": "/api/v1/user/register", 
-      "dest": "/index.js"
-    },
-    {
-      "src": "/api/v1/user/logout", 
-      "dest": "/index.js"
-    },
-    {
-      "src": "/api/v1/user/profile/update", 
-      "dest": "/index.js"
+      "src": "/(.*)", 
+      "dest": "/index.js" 
     }
   ]
 }
