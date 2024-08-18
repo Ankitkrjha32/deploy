@@ -35,6 +35,16 @@ const PORT = process.env.PORT || 4000;
 app.use('/api/v1/user', userRoute);
 app.use('/api/v1/notes', noteRoutes);
 
+// Root Route to Test the Server (Optional)
+app.get('/', (req, res) => {
+  res.send('Welcome to the backend server!');
+});
+
+// 404 Fallback Route for undefined endpoints
+app.use((req, res) => {
+  res.status(404).json({ message: 'Route not found' });
+});
+
 app.listen(PORT, () => {
   connectDB();
   console.log(`Server running at port ${PORT}`);
