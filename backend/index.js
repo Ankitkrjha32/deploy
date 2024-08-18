@@ -18,12 +18,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const corsOptions = {
-  origin: 'https://frontend-eight-roan-64.vercel.app',
-  credentials: true
-};
+// const corsOptions = {
+//   origin: 'https://frontend-eight-roan-64.vercel.app',
+//   credentials: true
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -33,6 +33,15 @@ const PORT = process.env.PORT || 8000;
 // APIs
 app.use('/api/v1/user', userRoute);
 app.use('/api/v1/notes', noteRoutes);
+// Root Route to Test the Server (Optional)
+app.get('/', (req, res) => {
+  res.send('Welcome to the backend server!');
+});
+
+// 404 Fallback Route for undefined endpoints
+app.use((req, res) => {
+  res.status(404).json({ message: 'Route not found' });
+});
 
 app.listen(PORT, () => {
   connectDB();
