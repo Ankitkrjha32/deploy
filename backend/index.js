@@ -24,7 +24,7 @@ app.use(cookieParser());
 //   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
 //   credentials: true, // Allow cookies
 // };
-const allowedOrigins = ['http://your-frontend-url.com'];  // Add your deployed frontend URL here
+const allowedOrigins = ['https://frontend-eight-roan-64.vercel.app'];  // Add your deployed frontend URL here
 
 app.use(cors({
   origin: function (origin, callback) {
