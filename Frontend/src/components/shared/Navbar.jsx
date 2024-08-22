@@ -4,7 +4,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, logout as logoutAction } from '../../redux/authSlice.jsx'; // Import the logout action
 import axios from 'axios';
-// import { USER_API_END_POINT } from '../../utils/constant';
+import { USER_API_END_POINT } from '../../utils/constant.js';
 import { toast } from 'sonner';
 
 const Navbar = () => {
