@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Home from './components/Home';
-import Login from './components/auth/Login';
-import Signup from './components/auth/Signup';
-import Notes from './components/StickyNotes/Notes';
+import Home from './components/Home.js';
+import Login from './components/auth/Login.js';
+import Signup from './components/auth/Signup.js';
+import Notes from './components/StickyNotes/Notes.js';
 import { useSelector } from 'react-redux';
 import './App.css';
 
